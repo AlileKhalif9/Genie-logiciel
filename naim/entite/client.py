@@ -1,7 +1,7 @@
 import datetime
 
 class Client:
-    client_id = "C001"  # Attribut de classe pour suivre l'ID des clients
+    client_id = "C000"  # Attribut de classe pour suivre l'ID des clients
 
     def __init__(self, name, surname, mobile_phone, email, postal_address):
         self.name = name

@@ -1,7 +1,7 @@
 import datetime
 
 class Quote:
-    quote_id = "Q001"  # Variable globale pour les identifiants uniques des devis
+    quote_id = "Q000"  # Variable globale pour les identifiants uniques des devis
 
     def __init__(self, order, order_quantities, price_no_taxes, price):
         self.order = order

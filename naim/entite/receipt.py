@@ -1,7 +1,7 @@
 from quote import *
 
 class Receipt(Quote):
-    receipt_id = "R001"
+    receipt_id = "R000"
 
     def __init__(self, order, order_quantities, price_no_taxes, price, paiement_date):
         super().__init__(order, order_quantities, price_no_taxes, price)
