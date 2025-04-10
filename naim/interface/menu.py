@@ -153,7 +153,7 @@ class Affiche_Acceuil(Tk):
     def acces_autorise(self):
         self.destroy()
         if __name__ == "__main__":
-            accueil.main()
+            acceuil.main()
 
     def acces_inscription(self):
         self.destroy()
