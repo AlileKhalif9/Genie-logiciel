@@ -12,10 +12,13 @@ class TableauDevis(Tk):
         self.nom_utilisateur = "User"
         self.page_actuelle = "devis"
         self.devis_donnees = [
-    [1, "Entreprise Dupont", "4500 €", "12/04/2025", True],
-    [2, "Société Martin", "3200 €", "08/04/2025", False],
-    [3, "Client Test", "1250 €", "10/04/2025", True],
-]
+            ["ID", "Client", "Total", "Date", "Validé ?"],  
+            [" ", " ", " ", " ", " "],
+
+            [1, "Client n°1 ", "3.5 €", "10/04/2025", "✅"],
+            [2, "sinj", "2200 €", "11/04/2025", "❌"]
+            ]  #Le mieux serait de gerer ça avec un fichier json pour que ça reste en mémoire
+
 
         self.afficher_acceuil()
 
@@ -65,20 +68,12 @@ class TableauDevis(Tk):
         self.table_frame.place(x=140, y=270, width=1000, height=500)
 
         #Exemple pour voir si ça marche (https://stacklima.com/creer-une-table-a-laide-de-tkinter/) pour le moment j'ai juste repris ce code 
-
-        devis_donnees = [
-            ["ID", "Client", "Total", "Date", "Validé ?"],  
-            [" ", " ", " ", " ", " "],
-
-            [1, "Client n°1 ", "3.5 €", "10/04/2025", "✅"],
-            [2, "sinj", "2200 €", "11/04/2025", "❌"]
-            ] #Le mieux serait de gerer ça avec un fichier json pour que ça reste en mémoire
         
-        for i in range(len(devis_donnees)):
-            for j in range(len(devis_donnees[0])):
+        for i in range(len(self.devis_donnees)):
+            for j in range(len(self.devis_donnees[0])):
                 cell = Entry(self.table_frame, width=18, fg='black', font=('Arial', 12))
                 cell.grid(row=i, column=j)
-                cell.insert(END, devis_donnees[i][j])
+                cell.insert(END, self.devis_donnees[i][j])
 
 
         self.mettre_a_jour_tableau()
