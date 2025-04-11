@@ -89,10 +89,11 @@ class TableauDevis(Tk):
         self.canvas.bind_all("<Button-5>", self._on_mousewheel_linux)
 
     def mettre_a_jour_tableau(self):
-        pass  # Tu peux y ajouter ton code de tableau ici
+        pass 
 
     def ajouter_devis(self):
-        pass
+        pass #append devis 
+        
     def supprimer_devis(self, index):
         if 0 <= index < len(self.devis_donnees):
             self.devis_donnees.pop(index)
