@@ -22,6 +22,9 @@ class User:
             raise ValueError("Password is not strong enough")
         return password
 
+    def get_password(self):
+         return self.__password
+
     def to_dict(self):
             return {
                 'name': self.name,

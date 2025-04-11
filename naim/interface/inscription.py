@@ -7,7 +7,7 @@ class Affiche_Inscription(Tk):
     def __init__(self):
         super().__init__()
         self.title("Inscription")
-        self.geometry("1280x800")
+        self.geometry("800x600")
         self.resizable(False, False)
         self.config(background="#2A2F4F")
         self.utilisateur_connecte = None
@@ -54,17 +54,17 @@ class Affiche_Inscription(Tk):
     # Champs de saisie pour les champs demandés
 
     
-        entry_nom = Entry(self, font=("Arial", 14), width=25)
-        self.canvas.create_window(320, 115, window=entry_nom)
+        self.entry_nom = Entry(self, font=("Arial", 14), width=25)
+        self.canvas.create_window(320, 115, window=self.entry_nom)
 
-        entry_prenom = Entry(self, font=("Arial", 14), width=25)
-        self.canvas.create_window(320, 230, window=entry_prenom)
+        self.entry_prenom = Entry(self, font=("Arial", 14), width=25)
+        self.canvas.create_window(320, 230, window=self.entry_prenom)
 
-        entry_adresse_mail = Entry(self, font=("Arial", 14), width=25)
-        self.canvas.create_window(320, 345, window=entry_adresse_mail)
+        self.entry_adresse_mail = Entry(self, font=("Arial", 14), width=25)
+        self.canvas.create_window(320, 345, window=self.entry_adresse_mail)
 
-        entry_adresse_postale = Entry(self, font=("Arial", 14), width=25)
-        self.canvas.create_window(320, 460, window=entry_adresse_postale)
+        self.entry_adresse_postale = Entry(self, font=("Arial", 14), width=25)
+        self.canvas.create_window(320, 460, window=self.entry_adresse_postale)
 
         entry_raison_sociale = Entry(self, font=("Arial", 14), width=25)
         self.canvas.create_window(320, 575, window=entry_raison_sociale)
@@ -75,11 +75,11 @@ class Affiche_Inscription(Tk):
         entry_entreprise = Entry(self, font=("Arial", 14), width=25)
         self.canvas.create_window(320, 815, window=entry_entreprise)
 
-        entry_nom_utilisateur = Entry(self, font=("Arial", 14), width=25)
-        self.canvas.create_window(320, 930, window=entry_nom_utilisateur)
+        self.entry_nom_utilisateur = Entry(self, font=("Arial", 14), width=25)
+        self.canvas.create_window(320, 930, window=self.entry_nom_utilisateur)
 
-        entry_mot_de_passe = Entry(self, font=("Arial", 14), width=25, show="*")
-        self.canvas.create_window(320, 1060, window=entry_mot_de_passe)
+        self.entry_mot_de_passe = Entry(self, font=("Arial", 14), width=25, show="*")
+        self.canvas.create_window(320, 1060, window=self.entry_mot_de_passe)
 
         entry_confirmer_mdp = Entry(self, font=("Arial", 14), width=25, show="*")
         self.canvas.create_window(320, 1175, window=entry_confirmer_mdp)
@@ -188,6 +188,15 @@ class Affiche_Inscription(Tk):
         )
         self.canvas.create_window(500, 1175, window=bouton_confirmer_mdp_ok)
 
+        self.bouton_valider = Button(
+            self,
+            image=self.images["i_ok"],
+            compound="center",
+            borderwidth=0,
+        )
+        self.canvas.create_window(500, 1290, window=self.bouton_valider)
+
+
         bouton_fermer = Button(
             self,
             image=self.images["fermer"],
@@ -196,6 +205,7 @@ class Affiche_Inscription(Tk):
             borderwidth=0,
             command=self.quit)
         self.canvas.create_window(1250, 30, window=bouton_fermer)
+
 
         # Optionnel : définir une région scrollable
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
@@ -223,13 +233,6 @@ class Affiche_Inscription(Tk):
         self.destroy()
         if __name__ == "__main__":
             inscription.main()
-
-
-    class Utilisateur:
-        def __init__(self, identifiant, nom, email):
-            self.identifiant = identifiant
-            self.nom = nom
-            self.email = email
 
 
 if __name__ == "__main__":
