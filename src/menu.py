@@ -31,6 +31,7 @@ class Affiche_Acceuil(Tk):
 
         self.afficher_connexion()
 
+
     def afficher_connexion(self):
         # Création du canvas
         self.canvas = Canvas(self, width=1280, height=800, bg="#2A2F4F", highlightthickness=0)
@@ -65,7 +66,7 @@ class Affiche_Acceuil(Tk):
             bg="#2A2F4F",
             fg="black",
             borderwidth=0,
-            command=lambda: print("Connexion"))
+            command=lambda :acces_connexion_tmp(self))
         self.canvas.create_window(485, 380, window=bouton_connexion)
 
         bouton_inscription = Button(
@@ -79,6 +80,18 @@ class Affiche_Acceuil(Tk):
             borderwidth=0,
             command=lambda: print("Mot de passe"))
         self.canvas.create_window(1040, 380, window=bouton_inscription)
+
+        register = Button(
+            self,
+            image=self.images["register_button"],
+            text=" ",
+            compound="center",
+            font=("Arial", 20),
+            bg="#2A2F4F",
+            fg="black",
+            borderwidth=0,
+            command=lambda: acces_inscription_tmp(self))
+        self.canvas.create_window(200, 200, window=register)
 
         bouton_fermer = Button(
             self,
@@ -124,17 +137,6 @@ class Affiche_Acceuil(Tk):
             command=lambda: print("Aide"))
         self.canvas.create_window(1250, 715, window=help)
     
-        register = Button(
-            self,
-            image=self.images["register_button"],
-            text=" ",
-            compound="center",
-            font=("Arial", 20),
-            bg="#2A2F4F",
-            fg="black",
-            borderwidth=0,
-            command=lambda: print("Aide"))
-        self.canvas.create_window(200, 200, window=register)
 
         # Optionnel : définir une région scrollable
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
@@ -150,16 +152,15 @@ class Affiche_Acceuil(Tk):
         elif event.num == 5:
             self.canvas.yview_scroll(1, "units")
 
-    def acces_autorise(self):
-        self.destroy()
-        if __name__ == "__main__":
-            acceuil.main()
+def acces_connexion_tmp(self):
+    self.destroy()
+    if __name__ == "__main__":
+        acceuil.app.mainloop()
 
-    def acces_inscription(self):
-        self.destroy()
-        if __name__ == "__main__":
-            inscription.main()
-
+def acces_inscription_tmp(self):
+    self.destroy()
+    if __name__ == "__main__":
+        inscription.app.mainloop() #jsp ça veut pas je verrais ça un peu après 
 
 class Utilisateur:
     def __init__(self, identifiant, nom, email):
