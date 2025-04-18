@@ -1,12 +1,15 @@
 from naim.interface.inscription import Affiche_Inscription
 from naim.factories.factory_user import Factory_user 
 from naim.exception.ex_inscri import Ex_inscri
+from naim.dao.dao_inscri import Db_Inscri
 
 class Ctrl_Inscri:
     def __init__(self):
         self.factory = Factory_user()
         self.vue = Affiche_Inscription()
         self.vue.bouton_valider.config(command=self.recuperer_donnees)
+        self.db = Db_Inscri()
+        self.db.init_db()
         self.vue.mainloop()
 
     def recuperer_donnees(self):
@@ -48,17 +51,23 @@ class Ctrl_Inscri:
         fac = Factory_user()
         fac.create_user(prenom, nom, nom_utilisateur,
                         telephone, email, adresse_postale, mot_de_passe)
+        self.db.add_user(prenom, nom, nom_utilisateur, 
+                         telephone, email, adresse_postale, mot_de_passe)
 
         print("Utilisateur créé avec succès !")
+        print("Utilisateur ajouté à la base de données")
         print(fac)
 
         self.vue.quit()
-        return fac
+        return True
     
+    # Fonction pour supprimer l'utilisateur
     def vider_factory(self):
         self.factory.clear()
+        self.db.clear_all_users()
         print("Tous les utilisateurs ont été supprimés.")
 
+    # Surcharge du print
     def check_user(self, nom_utilisateur, password):
         for user in self.factory.liste_users:
             if user.nom_utilisateur == nom_utilisateur and user.get_password() == password:

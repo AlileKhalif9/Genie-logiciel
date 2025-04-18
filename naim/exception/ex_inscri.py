@@ -1,6 +1,7 @@
 from tkinter import messagebox
 from naim.interface.inscription import Affiche_Inscription
 
+# Classe qui permet d'afficher des messages d'erreur sur la page d'inscription
 class Ex_inscri:
     @staticmethod
     def check_surname():

@@ -4,6 +4,7 @@ from ..entite.user import User
 class Factory_user:
     user: Optional[User] = None  # L'utilisateur est stocké ici après création
 
+    # Fonction pour créer un utilisateur
     @classmethod
     def create_user(cls, name, surname, username, mobile_phone, email, postal_address, password) -> User:
         if cls.user is not None:
@@ -19,10 +20,12 @@ class Factory_user:
     def get_user(cls) -> Optional[User]:
         return cls.user
 
+    # Fonction pour supprimer l'utilisateur
     @classmethod
     def clear(cls):
         cls.user = None
 
+    # Surcharge du print
     def __str__(self):
         if self.user:
             return f"User: {self.user.username} ({self.user.email})"

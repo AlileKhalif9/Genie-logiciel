@@ -10,20 +10,24 @@ class User:
         self.postal_adress = postal_adress
         self.__password = self._validate_password(password)
 
+    # Fonction pour valider le format de l'@ mail
     def _validate_email(self, email):
         email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
         if not re.match(email_regex, email):
             raise ValueError("Email is not valid")
         return email
 
+    # Fonction pour valider le mot de passe
     def _validate_password(self, password):
         # Vérifie qu'il y a au moins 8 caractères, une majuscule, une minuscule et un chiffre
         if len(password) < 8 or not any(c.isupper() for c in password) or not any(c.isdigit() for c in password):
             raise ValueError("Password is not strong enough")
         return password
 
+    # Accesseur pour le mot de passe
     def get_password(self):
          return self.__password
+    
 
     def to_dict(self):
             return {
