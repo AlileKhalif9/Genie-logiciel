@@ -37,4 +37,4 @@ class Db_Inscri(Data_Base):
         self.cur.execute("DELETE FROM user")
         self.conn.commit()
         self.disconnect()
-        print("Tous les utilisateurs ont été supprimés de la base de données.\n")
+        print("Tous les utilisateurs ont été supprimés de la base de données.")

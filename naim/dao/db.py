@@ -16,9 +16,9 @@ class Data_Base:
     def disconnect(self):
         if self.cur:
             self.cur.close()
-            print("Curseur fermé.\n")
+            print("Curseur fermé.")
         if self.conn:
             self.conn.close()
-            print("Connexion fermé.\n")
+            print("Connexion à la base de données fermé.")
 
 

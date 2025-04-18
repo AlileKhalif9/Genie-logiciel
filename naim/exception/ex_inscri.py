@@ -5,25 +5,30 @@ from naim.interface.inscription import Affiche_Inscription
 class Ex_inscri:
     @staticmethod
     def check_surname():
-    # Fonction pour vérifier si le nom de famille est entré
-        messagebox.showerror("Erreur : veuillez entrer votre nom")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre nom.")
 
     @staticmethod
     def check_name():
-        messagebox.showerror("Erreur : veuillez entrer votre prénom")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre prénom.")
+
     @staticmethod
     def check_email():
-        messagebox.showerror("Erreur : veuillez entrer votre adresse mail")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre email.")
 
     @staticmethod
     def check_adress():
-        messagebox.showerror("Erreur : veuillez entrer votre adresse postale")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre adresse postale.")
     
     @staticmethod
     def check_username():
-        messagebox.showerror("Erreur : veuillez entrer votre nom d'utilisateur")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre nom d'utilisateur.")
 
     @staticmethod
     def check_password():
-        messagebox.showerror("Erreur : veuillez confirmer le meme mot de passe")
+        messagebox.showerror("Erreur"  "Veuillez entrer votre mot de passe.")
+
+    # Fonction qui envoie un message si le mot de passe n'est pas confirmé
+    @staticmethod
+    def confirm_password():
+        messagebox.showerror("Erreur"  "Veuillez confirmer votre mot de passe.")
 

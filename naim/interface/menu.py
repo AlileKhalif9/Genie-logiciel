@@ -50,13 +50,13 @@ class Affiche_Acceuil(Tk):
         self.canvas.create_image(350, 600, image=self.images["explain"], anchor="center")
 
         # Champs utilisateur / mot de passe
-        entry_user = Entry(self, font=("Arial", 14), width=25)
-        entry_pass = Entry(self, font=("Arial", 14), width=25, show="*")
-        self.canvas.create_window(250, 380, window=entry_user)
-        self.canvas.create_window(800, 380, window=entry_pass)
+        self.entry_user = Entry(self, font=("Arial", 14), width=25)
+        self.entry_pass = Entry(self, font=("Arial", 14), width=25, show="*")
+        self.canvas.create_window(250, 380, window=self.entry_user)
+        self.canvas.create_window(800, 380, window=self.entry_pass)
 
         # Boutons
-        bouton_connexion = Button(
+        self.bouton_connexion = Button(
             self,
             image=self.images["connexion"],
             text="Connexion",
@@ -66,7 +66,7 @@ class Affiche_Acceuil(Tk):
             fg="black",
             borderwidth=0,
             command=lambda: print("Connexion"))
-        self.canvas.create_window(485, 380, window=bouton_connexion)
+        self.canvas.create_window(485, 380, window=self.bouton_connexion)
 
         bouton_inscription = Button(
             self,
@@ -112,7 +112,7 @@ class Affiche_Acceuil(Tk):
             command=lambda: print("Conditions"))
         self.canvas.create_window(1100, 660, window=conditions)
 
-        help = Button(
+        self.help = Button(
             self,
             image=self.images["help_button"],
             text=" ",
@@ -121,10 +121,10 @@ class Affiche_Acceuil(Tk):
             bg="#2A2F4F",
             fg="black",
             borderwidth=0,
-            command=lambda: print("Aide"))
-        self.canvas.create_window(1250, 715, window=help)
+            )
+        self.canvas.create_window(1250, 715, window=self.help)
     
-        register = Button(
+        self.inscription = Button(
             self,
             image=self.images["register_button"],
             text=" ",
@@ -134,7 +134,7 @@ class Affiche_Acceuil(Tk):
             fg="black",
             borderwidth=0,
             command=lambda: print("Aide"))
-        self.canvas.create_window(200, 200, window=register)
+        self.canvas.create_window(200, 200, window=self.inscription)
 
         # Optionnel : définir une région scrollable
         self.canvas.config(scrollregion=self.canvas.bbox("all"))
@@ -159,15 +159,3 @@ class Affiche_Acceuil(Tk):
         self.destroy()
         if __name__ == "__main__":
             inscription.main()
-
-
-class Utilisateur:
-    def __init__(self, identifiant, nom, email):
-        self.identifiant = identifiant
-        self.nom = nom
-        self.email = email
-
-
-if __name__ == "__main__":
-    app = Affiche_Acceuil()
-    app.mainloop()
