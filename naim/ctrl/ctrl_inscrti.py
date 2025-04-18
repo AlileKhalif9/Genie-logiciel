@@ -1,5 +1,6 @@
 from naim.interface.inscription import Affiche_Inscription
-from naim.factories.factory_user import Factory_user  # à adapter selon ton projet
+from naim.factories.factory_user import Factory_user 
+from naim.exception.ex_inscri import Ex_inscri
 
 class Ctrl_Inscri:
     def __init__(self):
@@ -18,6 +19,31 @@ class Ctrl_Inscri:
         mot_de_passe = self.vue.entry_mot_de_passe.get()
         telephone = "+33651554791"  # temporaire 
 
+        if(nom == ""):
+            Ex_inscri.check_surname()
+            return
+
+        if(prenom == ""):
+            Ex_inscri.check_name()
+            return
+        
+        if(email == ""):
+            Ex_inscri.check_email()
+            return
+        
+        if(adresse_postale == ""):
+            Ex_inscri.check_adress()
+            return
+
+        if(nom_utilisateur == ""):
+            Ex_inscri.check_username()
+            return
+
+        # On vérifie si le mot de passe et la confirmation de mot de passe sont les memes
+        if(mot_de_passe != self.vue.entry_confirmer_mdp.get()):
+            Ex_inscri.check_password()
+            return
+
         # Création d'un utilisateur via Factory
         fac = Factory_user()
         fac.create_user(prenom, nom, nom_utilisateur,
@@ -30,6 +56,14 @@ class Ctrl_Inscri:
         return fac
     
     def vider_factory(self):
-        self.factory.clear_all()
+        self.factory.clear()
         print("Tous les utilisateurs ont été supprimés.")
+
+    def check_user(self, nom_utilisateur, password):
+        for user in self.factory.liste_users:
+            if user.nom_utilisateur == nom_utilisateur and user.get_password() == password:
+                return True
+        return False
+
+        
  

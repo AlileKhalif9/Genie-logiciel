@@ -1,7 +1,7 @@
 from tkinter import *
 import os
-import accueil
-import inscription
+from . import accueil
+from . import inscription
 
 class Affiche_Acceuil(Tk):
     def __init__(self):
@@ -153,7 +153,7 @@ class Affiche_Acceuil(Tk):
     def acces_autorise(self):
         self.destroy()
         if __name__ == "__main__":
-            acceuil.main()
+            accueil.main()
 
     def acces_inscription(self):
         self.destroy()

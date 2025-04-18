@@ -81,8 +81,8 @@ class Affiche_Inscription(Tk):
         self.entry_mot_de_passe = Entry(self, font=("Arial", 14), width=25, show="*")
         self.canvas.create_window(320, 1060, window=self.entry_mot_de_passe)
 
-        entry_confirmer_mdp = Entry(self, font=("Arial", 14), width=25, show="*")
-        self.canvas.create_window(320, 1175, window=entry_confirmer_mdp)
+        self.entry_confirmer_mdp = Entry(self, font=("Arial", 14), width=25, show="*")
+        self.canvas.create_window(320, 1175, window=self.entry_confirmer_mdp)
 
 
 ####################""""
